@@ -1,574 +1,620 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXFANS Management</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<style>
-*{
-  box-sizing:border-box;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXFANS Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    *{
+      box-sizing:border-box;
+    }
 
-html{
-  scroll-behavior:smooth;
-}
+    html{
+      scroll-behavior:smooth;
+    }
 
-body{
-  font-family:'Poppins',sans-serif;
-  margin:0;
-  background: url('https://images.unsplash.com/photo-1520975922284-9e0f4a6c1b64?auto=format&fit=crop&w=1400&q=80') no-repeat center/cover;
-  color:white;
-}
+    body{
+      font-family:'Poppins',sans-serif;
+      margin:0;
+      background:
+        radial-gradient(circle at top, rgba(46,168,255,0.18), transparent 35%),
+        linear-gradient(135deg, #07162f 0%, #0a1f44 45%, #0d2c63 100%);
+      color:white;
+      min-height:100vh;
+    }
 
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(10,31,68,0.8);
-  backdrop-filter:blur(6px);
-  z-index:-1;
-}
+    .overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(5,12,28,0.25);
+      backdrop-filter:blur(4px);
+      z-index:-1;
+    }
 
-.section{
-  padding:60px 20px;
-  text-align:center;
-}
+    .section{
+      padding:60px 20px;
+      text-align:center;
+    }
 
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px 20px 80px;
-}
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px 20px 80px;
+    }
 
-.hero-logo{
-  width:120px;
-  height:120px;
-  object-fit:contain;
-  margin-bottom:18px;
-  filter:drop-shadow(0 10px 30px rgba(0,0,0,0.35));
-}
+    .hero-logo{
+      width:140px;
+      height:140px;
+      object-fit:contain;
+      margin-bottom:18px;
+      filter:drop-shadow(0 10px 30px rgba(0,0,0,0.35));
+      background:rgba(255,255,255,0.04);
+      border-radius:24px;
+      padding:10px;
+    }
 
-.hero-title{
-  font-size:52px;
-  line-height:1.05;
-  margin:0 0 12px;
-}
+    .hero-title{
+      font-size:52px;
+      line-height:1.05;
+      margin:0 0 12px;
+    }
 
-.hero-subtitle{
-  max-width:700px;
-  opacity:0.9;
-  font-size:18px;
-  margin:0 auto 24px;
-}
+    .hero-subtitle{
+      max-width:700px;
+      opacity:0.9;
+      font-size:18px;
+      margin:0 auto 24px;
+    }
 
-.hero-badges{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin:0 0 28px;
-}
+    .hero-badges{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin:0 0 28px;
+    }
 
-.hero-badge{
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.15);
-  padding:10px 16px;
-  border-radius:999px;
-  font-size:13px;
-  backdrop-filter:blur(10px);
-}
+    .hero-badge{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
+      padding:10px 16px;
+      border-radius:999px;
+      font-size:13px;
+      backdrop-filter:blur(10px);
+    }
 
-.form-wrapper{
-  max-width:760px;
-  margin:0 auto;
-}
+    .form-wrapper{
+      max-width:760px;
+      margin:0 auto;
+    }
 
-@media (max-width:700px){
-  .hero-title{
-    font-size:38px;
-  }
+    @media (max-width:700px){
+      .hero-title{
+        font-size:38px;
+      }
 
-  .hero-subtitle{
-    font-size:16px;
-  }
+      .hero-subtitle{
+        font-size:16px;
+      }
 
-  .hero-logo{
-    width:92px;
-    height:92px;
-  }
-}
+      .hero-logo{
+        width:100px;
+        height:100px;
+      }
+    }
 
-h2{
-  font-size:32px;
-  margin-bottom:10px;
-}
+    h2{
+      font-size:32px;
+      margin-bottom:10px;
+    }
 
-form{
-  max-width:520px;
-  margin:auto;
-  background:rgba(255,255,255,0.08);
-  padding:30px;
-  border-radius:25px;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
+    form{
+      max-width:520px;
+      margin:auto;
+      background:rgba(255,255,255,0.08);
+      padding:30px;
+      border-radius:25px;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    }
 
-.input-group{
-  position:relative;
-  width:100%;
-  margin-bottom:10px;
-}
+    .input-group{
+      position:relative;
+      width:100%;
+      margin-bottom:10px;
+    }
 
-.input-group i{
-  position:absolute;
-  left:12px;
-  top:50%;
-  transform:translateY(-50%);
-  color:rgba(255,255,255,0.6);
-}
+    .input-group i{
+      position:absolute;
+      left:12px;
+      top:50%;
+      transform:translateY(-50%);
+      color:rgba(255,255,255,0.6);
+      z-index:2;
+    }
 
-input,select{
-  display:block;
-  width:100%;
-  padding:16px 14px 16px 38px;
-  border-radius:12px;
-  border:none;
-  font-size:14px;
-  background:rgba(255,255,255,0.12);
-  color:white;
-}
+    input,select{
+      display:block;
+      width:100%;
+      padding:16px 14px 16px 38px;
+      border-radius:12px;
+      border:none;
+      font-size:14px;
+      background:rgba(255,255,255,0.12);
+      color:white;
+    }
 
-input:focus,select:focus{
-  outline:none;
-  box-shadow:0 0 0 2px #2ea8ff;
-}
+    input:focus,select:focus{
+      outline:none;
+      box-shadow:0 0 0 2px #2ea8ff;
+    }
 
-label{
-  position:absolute;
-  left:38px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:13px;
-  color:rgba(255,255,255,0.6);
-  pointer-events:none;
-  transition:0.3s;
-}
+    input[type="date"]{
+      color:white;
+    }
 
-input:focus + label,
-input:not(:placeholder-shown) + label,
-select:focus + label,
-select:valid + label{
-  top:-8px;
-  font-size:11px;
-  color:#2ea8ff;
-}
+    input[type="file"]{
+      padding-top:18px;
+      padding-bottom:18px;
+    }
 
-.row{
-  display:flex;
-  gap:20px;
-  align-items:flex-start;
-}
+    select option{
+      color:black;
+    }
 
-.row .input-group{
-  flex:1 1 0;
-  min-width:0;
-}
+    label{
+      position:absolute;
+      left:38px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:13px;
+      color:rgba(255,255,255,0.6);
+      pointer-events:none;
+      transition:0.3s;
+      background:transparent;
+      z-index:1;
+    }
 
-@media (max-width:600px){
-  .row{
-    flex-direction:column;
-  }
-}
+    input:focus + label,
+    input:not(:placeholder-shown) + label,
+    select:focus + label,
+    select:valid + label,
+    input[type="date"]:valid + label,
+    input[type="file"]:valid + label{
+      top:-8px;
+      font-size:11px;
+      color:#2ea8ff;
+    }
 
-.btn{
-  padding:15px;
-  background:linear-gradient(45deg,#2ea8ff,#00c6ff);
-  border:none;
-  border-radius:30px;
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.3s;
-}
+    .row{
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+    }
 
-.btn:hover{
-  transform:scale(1.05);
-}
+    .row .input-group{
+      flex:1 1 0;
+      min-width:0;
+    }
 
-.step{
-  display:none;
-  opacity:0;
-  transform:translateX(20px);
-  transition:0.4s;
-}
+    @media (max-width:600px){
+      .row{
+        flex-direction:column;
+      }
+    }
 
-.active{
-  display:block;
-  opacity:1;
-  transform:translateX(0);
-}
+    .btn{
+      padding:15px;
+      background:linear-gradient(45deg,#2ea8ff,#00c6ff);
+      border:none;
+      border-radius:30px;
+      color:white;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
 
-.upload-box{
-  border:2px dashed rgba(255,255,255,0.3);
-  padding:25px;
-  border-radius:15px;
-}
+    .btn:hover{
+      transform:scale(1.05);
+    }
 
-.progress{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-bottom:20px;
-}
+    .btn:disabled{
+      opacity:0.7;
+      cursor:not-allowed;
+      transform:none;
+    }
 
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.3);
-}
+    .step{
+      display:none;
+      opacity:0;
+      transform:translateX(20px);
+      transition:0.4s;
+    }
 
-.dot.active{
-  background:#2ea8ff;
-}
+    .active{
+      display:block;
+      opacity:1;
+      transform:translateX(0);
+    }
 
-.success{
-  display:none;
-  text-align:center;
-}
-</style>
+    .upload-box{
+      border:2px dashed rgba(255,255,255,0.3);
+      padding:25px;
+      border-radius:15px;
+    }
+
+    .progress{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.3);
+    }
+
+    .dot.active{
+      background:#2ea8ff;
+    }
+
+    .success{
+      display:none;
+      text-align:center;
+      background:rgba(255,255,255,0.08);
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+      max-width:520px;
+      margin:30px auto 0;
+    }
+  </style>
 </head>
 <body>
-<div class="overlay"></div>
+  <div class="overlay"></div>
 
-<div class="section hero">
-  <img src="https://i.imgur.com/8Km9tLL.png" alt="Logo NEXFANS" class="hero-logo">
-  <h1 class="hero-title">NEXFANS Management</h1>
-  <p class="hero-subtitle">Convertite en creadora profesional con nosotros. Te ayudamos a escalar tu marca, ordenar tu proceso y dar el siguiente paso.</p>
+  <div class="section hero">
+    <img src="logo.jpg" alt="Logo NEXFANS" class="hero-logo">
+    <h1 class="hero-title">NEXFANS Management</h1>
+    <p class="hero-subtitle">
+      Convertite en creadora profesional con nosotros. Te ayudamos a escalar tu marca,
+      ordenar tu proceso y dar el siguiente paso.
+    </p>
 
-  <div class="hero-badges">
-    <span class="hero-badge">Aplicación rápida</span>
-    <span class="hero-badge">Proceso profesional</span>
-    <span class="hero-badge">Equipo de crecimiento</span>
+    <div class="hero-badges">
+      <span class="hero-badge">Aplicación rápida</span>
+      <span class="hero-badge">Proceso profesional</span>
+      <span class="hero-badge">Equipo de crecimiento</span>
+    </div>
+
+    <a href="#formSection" class="btn" style="text-decoration:none;display:inline-block;">Postulate ya!</a>
   </div>
 
-  <a href="#formSection" class="btn" style="text-decoration:none;display:inline-block;">Postulate ya!</a>
-</div>
+  <div class="section form-wrapper" id="formSection">
+    <h2>Aplicá ahora</h2>
 
-<div class="section form-wrapper" id="formSection">
-<h2>Aplicá ahora</h2>
+    <div class="progress">
+      <div class="dot active" id="dot1"></div>
+      <div class="dot" id="dot2"></div>
+      <div class="dot" id="dot3"></div>
+    </div>
 
-<div class="progress">
-<div class="dot active" id="dot1"></div>
-<div class="dot" id="dot2"></div>
-<div class="dot" id="dot3"></div>
-</div>
+    <div id="formulario">
 
-<div id="formulario">
+      <div id="step1" class="step active">
+        <h3>Datos Personales</h3>
 
-<div id="step1" class="step active">
-<h3>Datos Personales</h3>
+        <div class="row">
+          <div class="input-group">
+            <i class="fa fa-user"></i>
+            <input name="nombre" required placeholder=" ">
+            <label>Nombre *</label>
+          </div>
+          <div class="input-group">
+            <i class="fa fa-user"></i>
+            <input name="apellido" required placeholder=" ">
+            <label>Apellidos *</label>
+          </div>
+        </div>
 
-<div class="row">
-  <div class="input-group">
-    <i class="fa fa-user"></i>
-    <input name="nombre" required placeholder=" ">
-    <label>Nombre *</label>
+        <div class="input-group">
+          <i class="fa fa-venus"></i>
+          <select name="sexo" required>
+            <option value="" disabled selected hidden></option>
+            <option>Femenino</option>
+          </select>
+          <label>Sexo *</label>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-calendar"></i>
+          <input type="date" name="fecha" required>
+          <label>Fecha de nacimiento *</label>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-globe"></i>
+          <select name="pais_nac" required>
+            <option value="" disabled selected hidden></option>
+            <option>Argentina</option>
+            <option>Bolivia</option>
+            <option>Brasil</option>
+            <option>Chile</option>
+            <option>Colombia</option>
+            <option>Costa Rica</option>
+            <option>Cuba</option>
+            <option>Ecuador</option>
+            <option>El Salvador</option>
+            <option>España</option>
+            <option>Estados Unidos</option>
+            <option>Guatemala</option>
+            <option>Honduras</option>
+            <option>México</option>
+            <option>Nicaragua</option>
+            <option>Panamá</option>
+            <option>Paraguay</option>
+            <option>Perú</option>
+            <option>República Dominicana</option>
+            <option>Uruguay</option>
+            <option>Venezuela</option>
+            <option>Otro</option>
+          </select>
+          <label>País de nacimiento *</label>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-location-dot"></i>
+          <select name="pais_res" required>
+            <option value="" disabled selected hidden></option>
+            <option>Argentina</option>
+            <option>Bolivia</option>
+            <option>Brasil</option>
+            <option>Chile</option>
+            <option>Colombia</option>
+            <option>Costa Rica</option>
+            <option>Cuba</option>
+            <option>Ecuador</option>
+            <option>El Salvador</option>
+            <option>España</option>
+            <option>Estados Unidos</option>
+            <option>Guatemala</option>
+            <option>Honduras</option>
+            <option>México</option>
+            <option>Nicaragua</option>
+            <option>Panamá</option>
+            <option>Paraguay</option>
+            <option>Perú</option>
+            <option>República Dominicana</option>
+            <option>Uruguay</option>
+            <option>Venezuela</option>
+            <option>Otro</option>
+          </select>
+          <label>País de residencia *</label>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-language"></i>
+          <select name="idioma" required>
+            <option value="" disabled selected hidden></option>
+            <option>Español</option>
+            <option>Inglés</option>
+            <option>Portugués</option>
+            <option>Francés</option>
+            <option>Italiano</option>
+            <option>Alemán</option>
+            <option>Árabe</option>
+            <option>Ruso</option>
+            <option>Chino mandarín</option>
+            <option>Japonés</option>
+            <option>Coreano</option>
+            <option>Otro</option>
+          </select>
+          <label>Idioma principal *</label>
+        </div>
+
+        <button type="button" class="btn" onclick="nextStep(1)">Siguiente</button>
+      </div>
+
+      <div id="step2" class="step">
+        <h3>Contacto</h3>
+
+        <div class="input-group">
+          <i class="fa fa-envelope"></i>
+          <input type="email" name="email" required placeholder=" ">
+          <label>Email *</label>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-phone"></i>
+          <input name="telefono" required placeholder=" ">
+          <label>Teléfono *</label>
+        </div>
+
+        <button type="button" class="btn" onclick="nextStep(2)">Siguiente</button>
+      </div>
+
+      <div id="step3" class="step">
+        <h3>Sobre OnlyFans</h3>
+
+        <p><strong>Sube las siguientes fotos para que podamos evaluar tu perfil:</strong></p>
+        <p>Foto de rostro: una foto clara de tu cara sin maquillaje excesivo, en luz natural.</p>
+        <p>Foto de cuerpo entero: una foto que muestre tu cuerpo completo, preferiblemente en ropa ajustada, lencería o vestido de baño de dos piezas.</p>
+        <p>Foto casual: una foto en un atuendo o estilo que represente tu personalidad o marca personal.</p>
+
+        <p><strong>Importante:</strong></p>
+        <p>
+          Subir 1 foto por cada categoría.<br>
+          Cada foto debe pesar menos de 20 MB.<br>
+          Solo puedes subir fotos / imágenes.
+        </p>
+
+        <div class="upload-box">
+          <div class="input-group">
+            <i class="fa fa-face-smile"></i>
+            <input type="file" name="foto_rostro" accept="image/*" required>
+            <label>Foto de rostro * (1 foto)</label>
+          </div>
+
+          <div class="input-group">
+            <i class="fa fa-person"></i>
+            <input type="file" name="foto_cuerpo" accept="image/*" required>
+            <label>Foto de cuerpo entero * (1 foto)</label>
+          </div>
+
+          <div class="input-group">
+            <i class="fa fa-camera"></i>
+            <input type="file" name="foto_casual" accept="image/*" required>
+            <label>Foto casual * (1 foto)</label>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-star"></i>
+          <select name="of" required>
+            <option value="" disabled selected hidden></option>
+            <option>Si</option>
+            <option>No</option>
+          </select>
+          <label>¿Tenés OnlyFans? *</label>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-link"></i>
+          <input name="link" placeholder=" ">
+          <label>Link OnlyFans</label>
+        </div>
+
+        <button type="button" class="btn" id="submitBtn">Enviar</button>
+      </div>
+
+    </div>
   </div>
-  <div class="input-group">
-    <i class="fa fa-user"></i>
-    <input name="apellido" required placeholder=" ">
-    <label>Apellidos *</label>
-  </div>
-</div>
 
-<div class="input-group">
-  <i class="fa fa-venus"></i>
-  <select name="sexo" required>
-    <option value="" disabled selected hidden></option>
-    <option>Femenino</option>
-  </select>
-  <label>Sexo *</label>
-</div>
-
-<div class="input-group">
-  <i class="fa fa-calendar"></i>
-  <input type="date" name="fecha" required>
-  <label>Fecha de nacimiento *</label>
-</div>
-
-<div class="input-group">
-  <i class="fa fa-globe"></i>
-  <select name="pais_nac" required>
-    <option value="" disabled selected hidden></option>
-    <option>Argentina</option>
-    <option>Bolivia</option>
-    <option>Brasil</option>
-    <option>Chile</option>
-    <option>Colombia</option>
-    <option>Costa Rica</option>
-    <option>Cuba</option>
-    <option>Ecuador</option>
-    <option>El Salvador</option>
-    <option>España</option>
-    <option>Estados Unidos</option>
-    <option>Guatemala</option>
-    <option>Honduras</option>
-    <option>México</option>
-    <option>Nicaragua</option>
-    <option>Panamá</option>
-    <option>Paraguay</option>
-    <option>Perú</option>
-    <option>República Dominicana</option>
-    <option>Uruguay</option>
-    <option>Venezuela</option>
-    <option>Otro</option>
-  </select>
-  <label>País de nacimiento *</label>
-</div>
-
-<div class="input-group">
-  <i class="fa fa-location-dot"></i>
-  <select name="pais_res" required>
-    <option value="" disabled selected hidden></option>
-    <option>Argentina</option>
-    <option>Bolivia</option>
-    <option>Brasil</option>
-    <option>Chile</option>
-    <option>Colombia</option>
-    <option>Costa Rica</option>
-    <option>Cuba</option>
-    <option>Ecuador</option>
-    <option>El Salvador</option>
-    <option>España</option>
-    <option>Estados Unidos</option>
-    <option>Guatemala</option>
-    <option>Honduras</option>
-    <option>México</option>
-    <option>Nicaragua</option>
-    <option>Panamá</option>
-    <option>Paraguay</option>
-    <option>Perú</option>
-    <option>República Dominicana</option>
-    <option>Uruguay</option>
-    <option>Venezuela</option>
-    <option>Otro</option>
-  </select>
-  <label>País de residencia *</label>
-</div>
-
-<div class="input-group">
-  <i class="fa fa-language"></i>
-  <select name="idioma" required>
-    <option value="" disabled selected hidden></option>
-    <option>Español</option>
-    <option>Inglés</option>
-    <option>Portugués</option>
-    <option>Francés</option>
-    <option>Italiano</option>
-    <option>Alemán</option>
-    <option>Árabe</option>
-    <option>Ruso</option>
-    <option>Chino mandarín</option>
-    <option>Japonés</option>
-    <option>Coreano</option>
-    <option>Otro</option>
-  </select>
-  <label>Idioma principal *</label>
-</div>
-
-<button type="button" class="btn" onclick="nextStep(1)">Siguiente</button>
-</div>
-
-<div id="step2" class="step">
-<h3>Contacto</h3>
-
-<div class="input-group">
-  <i class="fa fa-envelope"></i>
-  <input type="email" name="email" required placeholder=" ">
-  <label>Email *</label>
-</div>
-
-<div class="input-group">
-  <i class="fa fa-phone"></i>
-  <input name="telefono" required placeholder=" ">
-  <label>Teléfono *</label>
-</div>
-
-<button type="button" class="btn" onclick="nextStep(2)">Siguiente</button>
-</div>
-
-<div id="step3" class="step">
-<h3>Sobre OnlyFans</h3>
-
-<p><strong>Sube las siguientes fotos para que podamos evaluar tu perfil:</strong></p>
-<p>Foto de rostro: Una foto clara de tu cara sin maquillaje excesivo, en luz natural.</p>
-<p>Foto de cuerpo entero: Una foto que muestre tu cuerpo completo, preferiblemente en ropa ajustada, lencería, Vestido de baño de dos piezas.</p>
-<p>Foto Casual: Una foto en un atuendo o estilo que represente tu personalidad o marca personal (puede ser una foto que ya tengas publicada en tu perfil de redes sociales).</p>
-
-<p><strong>Importante:</strong></p>
-<p>
-Subir 1 foto por cada categoría.<br>
-Cada foto debe pesar menos de 20 MB.<br>
-Solo puedes subir Fotos / Imagenes.<br>
-
-</p>
-
-<div class="upload-box">
-  <div class="input-group">
-    <i class="fa fa-face-smile"></i>
-    <input type="file" name="foto_rostro" accept="image/*" required>
-    <label>Foto de rostro * (1 foto)</label>
+  <div class="success" id="successMessage">
+    <h2>✅ Aplicación enviada</h2>
+    <p>Te vamos a contactar pronto.</p>
   </div>
 
-  <div class="input-group">
-    <i class="fa fa-person"></i>
-    <input type="file" name="foto_cuerpo" accept="image/*" required>
-    <label>Foto de cuerpo entero * (1 foto)</label>
-  </div>
+  <script>
+    function nextStep(step){
+      const current = document.getElementById('step' + step);
+      const inputs = current.querySelectorAll('input,select');
+      for(let i of inputs){
+        if(!i.checkValidity()){
+          i.reportValidity();
+          return;
+        }
+      }
 
-  <div class="input-group">
-    <i class="fa fa-camera"></i>
-    <input type="file" name="foto_casual" accept="image/*" required>
-    <label>Foto casual * (1 foto)</label>
-  </div>
-</div>
+      current.classList.remove('active');
+      document.getElementById('step' + (step + 1)).classList.add('active');
 
-<div class="input-group">
-<i class="fa fa-star"></i>
-<select name="of" required>
-<option value="" disabled selected hidden></option>
-<option>Si</option>
-<option>No</option>
-</select>
-<label>¿Tenés OnlyFans? *</label>
-</div>
-
-<div class="input-group">
-<i class="fa fa-link"></i>
-<input name="link" placeholder=" ">
-<label>Link OnlyFans</label>
-</div>
-
-<button type="button" class="btn" id="submitBtn">Enviar</button>
-</div>
-
-</div>
-</div>
-
-<div class="success" id="successMessage">
-<h2>✅ Aplicación enviada</h2>
-<p>Te vamos a contactar pronto</p>
-</div>
-
-</div>
-
-<script>
-function nextStep(step){
-const current=document.getElementById('step'+step);
-const inputs=current.querySelectorAll('input,select');
-for(let i of inputs){if(!i.checkValidity()){i.reportValidity();return}}
-current.classList.remove('active');
-document.getElementById('step'+(step+1)).classList.add('active');
-
-document.getElementById('dot'+step).classList.remove('active');
-document.getElementById('dot'+(step+1)).classList.add('active');
-}
-
-function fileToBase64(file){
-  return new Promise((resolve,reject)=>{
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result.split(',')[1];
-      resolve(result);
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
-
-async function fileInputToPayload(fileInput){
-  const file = fileInput.files[0];
-  return [{
-    name: file.name,
-    type: file.type,
-    data: await fileToBase64(file)
-  }];
-}
-
-const form = document.getElementById('formulario');
-
-function getFieldValue(name){
-  const field = document.querySelector(`[name="${name}"]`);
-  return field ? field.value : '';
-}
-const submitBtn = document.getElementById('submitBtn');
-
-submitBtn.addEventListener('click', async function(){
-  if (submitBtn.disabled) return;
-
-  const step3 = document.getElementById('step3');
-  const step3Inputs = step3.querySelectorAll('input, select');
-  for (let i of step3Inputs) {
-    if (!i.checkValidity()) {
-      i.reportValidity();
-      return;
+      document.getElementById('dot' + step).classList.remove('active');
+      document.getElementById('dot' + (step + 1)).classList.add('active');
     }
-  }
 
-  const rostroInput = document.querySelector('input[name="foto_rostro"]');
-  const cuerpoInput = document.querySelector('input[name="foto_cuerpo"]');
-  const casualInput = document.querySelector('input[name="foto_casual"]');
+    function fileToBase64(file){
+      return new Promise((resolve,reject)=>{
+        const reader = new FileReader();
+        reader.onload = () => {
+          const result = reader.result.split(',')[1];
+          resolve(result);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
 
-  if(!rostroInput.files.length || !cuerpoInput.files.length || !casualInput.files.length){
-    alert('Tenés que subir 1 foto en cada categoría.');
-    return;
-  }
+    async function fileInputToPayload(fileInput){
+      const file = fileInput.files[0];
+      return [{
+        name: file.name,
+        type: file.type,
+        data: await fileToBase64(file)
+      }];
+    }
 
-  const payload = {
-    nombre: getFieldValue('nombre'),
-    apellido: getFieldValue('apellido'),
-    sexo: getFieldValue('sexo'),
-    fecha: getFieldValue('fecha'),
-    pais_nac: getFieldValue('pais_nac'),
-    pais_res: getFieldValue('pais_res'),
-    idioma: getFieldValue('idioma'),
-    email: getFieldValue('email'),
-    telefono: getFieldValue('telefono'),
-    of: getFieldValue('of'),
-    link: getFieldValue('link'),
-    foto_rostro_files: await fileInputToPayload(rostroInput),
-    foto_cuerpo_files: await fileInputToPayload(cuerpoInput),
-    foto_casual_files: await fileInputToPayload(casualInput)
-  };
+    const form = document.getElementById('formulario');
 
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Enviando...';
+    function getFieldValue(name){
+      const field = document.querySelector(`[name="${name}"]`);
+      return field ? field.value : '';
+    }
 
-  try {
-    await fetch('https://script.google.com/macros/s/AKfycbz2w1koQ8YrToe8rtIHMlvJdVQJ8LSvnEeiS128k5QMYfYgr0fprTxAO3QdPGiQr99JkA/exec', {
-      method:'POST',
-      mode:'no-cors',
-      body: JSON.stringify(payload)
+    const submitBtn = document.getElementById('submitBtn');
+
+    submitBtn.addEventListener('click', async function(){
+      if (submitBtn.disabled) return;
+
+      const step3 = document.getElementById('step3');
+      const step3Inputs = step3.querySelectorAll('input, select');
+
+      for (let i of step3Inputs) {
+        if (!i.checkValidity()) {
+          i.reportValidity();
+          return;
+        }
+      }
+
+      const rostroInput = document.querySelector('input[name="foto_rostro"]');
+      const cuerpoInput = document.querySelector('input[name="foto_cuerpo"]');
+      const casualInput = document.querySelector('input[name="foto_casual"]');
+
+      if(!rostroInput.files.length || !cuerpoInput.files.length || !casualInput.files.length){
+        alert('Tenés que subir 1 foto en cada categoría.');
+        return;
+      }
+
+      const payload = {
+        nombre: getFieldValue('nombre'),
+        apellido: getFieldValue('apellido'),
+        sexo: getFieldValue('sexo'),
+        fecha: getFieldValue('fecha'),
+        pais_nac: getFieldValue('pais_nac'),
+        pais_res: getFieldValue('pais_res'),
+        idioma: getFieldValue('idioma'),
+        email: getFieldValue('email'),
+        telefono: getFieldValue('telefono'),
+        of: getFieldValue('of'),
+        link: getFieldValue('link'),
+        foto_rostro_files: await fileInputToPayload(rostroInput),
+        foto_cuerpo_files: await fileInputToPayload(cuerpoInput),
+        foto_casual_files: await fileInputToPayload(casualInput)
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbz2w1koQ8YrToe8rtIHMlvJdVQJ8LSvnEeiS128k5QMYfYgr0fprTxAO3QdPGiQr99JkA/exec', {
+          method:'POST',
+          mode:'no-cors',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        form.style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+      } catch (error) {
+        console.error(error);
+        alert('Hubo un error al enviar el formulario.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar';
+      }
     });
-
-    form.style.display = 'none';
-    document.getElementById('successMessage').style.display = 'block';
-  } catch (error) {
-    console.error(error);
-    alert('Hubo un error al enviar el formulario.');
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Enviar';
-  }
-});
-</script>
-
+  </script>
 </body>
 </html>
